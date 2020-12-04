@@ -1,7 +1,7 @@
 import Controller from '@curveball/controller';
 import { Context } from '@curveball/core';
 
-class HomeController extends Controller {
+export default class HomeController extends Controller {
 
   get(ctx: Context) {
 
@@ -13,5 +13,3 @@ class HomeController extends Controller {
   }
 
 }
-
-export default new HomeController();
