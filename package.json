@@ -1,5 +1,5 @@
 {
-  "name": "@curveball/starter",
+  "name": "@badgateway/todo-api",
   "version": "0.0.1",
   "description": "Minimal curveball starter template",
   "main": "dist/index.js",
