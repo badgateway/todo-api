@@ -46,9 +46,11 @@
   "dependencies": {
     "@curveball/accesslog": "^0.2.0",
     "@curveball/bodyparser": "^0.4.6",
+    "@curveball/browser": "^0.10.3",
     "@curveball/controller": "^0.3.0",
     "@curveball/core": "^0.14.3",
     "@curveball/problem": "^0.2.2",
-    "@curveball/router": "^0.2.4"
+    "@curveball/router": "^0.2.4",
+    "mysql2": "^2.2.5"
   }
 }
