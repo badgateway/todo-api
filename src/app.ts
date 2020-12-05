@@ -3,20 +3,33 @@ import accessLog from '@curveball/accesslog';
 import problem from '@curveball/problem';
 import bodyParser from '@curveball/bodyparser';
 import routes from './routes';
+import browser from '@curveball/browser';
+import * as db from './database';
 
-const app = new Application();
+export default async () => {
+  await db.init();
 
-// The accesslog middleware shows all requests and responses on the cli.
-app.use(accessLog());
+  const app = new Application();
 
-// The problem middleware turns exceptions into application/problem+json error
-// responses.
-app.use(problem());
+  // The accesslog middleware shows all requests and responses on the cli.
+  app.use(accessLog());
 
-// The bodyparser middleware is responsible for parsing JSON and url-encoded
-// request bodies, and populate ctx.request.body.
-app.use(bodyParser());
+  // The browser middleware renders pretty HTML interfaces if JSON endpoints are
+  // hit by a common browser.
+  app.use(browser({
+    title: 'Todo API',
+  }));
 
-app.use(...routes);
+  // The problem middleware turns exceptions into application/problem+json error
+  // responses.
+  app.use(problem());
 
-export default app;
+  // The bodyparser middleware is responsible for parsing JSON and url-encoded
+  // request bodies, and populate ctx.request.body.
+  app.use(bodyParser());
+
+  app.use(...routes);
+
+  return app;
+
+}
