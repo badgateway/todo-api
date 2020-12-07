@@ -9,7 +9,7 @@ function getSettings(): mysql.PoolOptions {
     password: process.env.MYSQL_PASSWORD || '',
     database: process.env.MYSQL_DATABASE || 'todo_api',
     host: process.env.MYSQL_HOST || '127.0.0.1',
-  }
+  };
 }
 
 export async function init() {
@@ -21,13 +21,23 @@ export async function init() {
   console.log('last applied patch number: %i', result[0].max);
 }
 
-export async function query<T extends Record<string, any> = Record<string, any>>(query: string, ...args: any[]): Promise<T[]> {
+export async function query<T extends Record<string, any> = Record<string, any>>(query: string, args?: any): Promise<T[]> {
 
   if (pool === null) {
     throw new Error('Cannot use MySQL before it was initialized');
   }
   const [result] = await pool.query<mysql.RowDataPacket[]>(query, args);
   return result as T[];
+
+}
+
+export async function insert(query: string, args: any): Promise<number> {
+
+  if (pool === null) {
+    throw new Error('Cannot use MySQL before it was initialized');
+  }
+  const result = await pool.query<mysql.OkPacket>(query, args);
+  return result[0].insertId;
 
 }
 
@@ -38,4 +48,4 @@ export default (): mysql.Pool => {
   }
   return pool;
 
-}
+};

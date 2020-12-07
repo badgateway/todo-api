@@ -1,7 +1,8 @@
-export type TaskStatus = 'needs-action' | 'in-progress' | 'completed';
+export type TodoStatus = 'needs-action' | 'in-progress' | 'completed';
 
-export type Task = {
+export type Todo = {
   id: number;
+  listId: string;
   title: string;
 
   createdAt: Date;
@@ -12,6 +13,7 @@ export type Task = {
 
 } | {
   id: number;
+  listId: string;
   title: string;
 
   createdAt: Date;
@@ -21,4 +23,4 @@ export type Task = {
   completedAt: Date;
 }
 
-export type NewTask = Omit<Task, 'id' | 'createdAt' | 'modifiedAt'>;
+export type NewTodo = Omit<Todo, 'id' | 'createdAt' | 'modifiedAt'>;

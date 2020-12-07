@@ -10,7 +10,7 @@ export default class HomeController extends Controller {
     ctx.response.body = {
       _links: {
         self: { href: '/' },
-        'todo-collection': { href: '/todo', title: 'List of todos'},
+        'list-collection': { href: '/list', title: 'List of lists!'},
       },
       title: 'Hello World!'
     };
