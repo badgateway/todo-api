@@ -45,10 +45,12 @@
   },
   "dependencies": {
     "@curveball/accesslog": "^0.2.0",
+    "@curveball/aws-lambda": "^0.2.0",
     "@curveball/bodyparser": "^0.4.6",
     "@curveball/browser": "^0.10.3",
     "@curveball/controller": "^0.3.0",
     "@curveball/core": "^0.15.0",
+    "@curveball/cors": "^0.1.0",
     "@curveball/problem": "^0.2.2",
     "@curveball/router": "^0.2.4",
     "@types/nanoid": "^2.1.0",
